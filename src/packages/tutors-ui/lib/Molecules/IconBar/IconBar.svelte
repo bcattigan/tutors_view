@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Icon } from "tutors-ui";
-  import type { IconNavBar } from "tutors-reader-lib/src/types/icon-types";
+  import { Icon } from "../../..";
+  import type { IconNavBar } from "../../../../tutors-reader-lib/src/types/icon-types";
 
   export let nav: IconNavBar;
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import { UnitCard, VideoCard } from "tutors-ui";
+  import { UnitCard, VideoCard } from "../../../../packages/tutors-ui";
   import Topic from "./topic.svelte";
   export let data: PageData;
 </script>

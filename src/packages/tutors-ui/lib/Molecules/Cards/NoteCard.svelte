@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Lo } from "tutors-reader-lib/src/types/lo-types";
-  import { convertMd } from "tutors-reader-lib/src/utils/markdown-utils";
-  import { generateToc } from "tutors-reader-lib/src/utils/markdown-toc-lib";
-  import { currentCourse } from "tutors-reader-lib/src/stores/stores";
+  import type { Lo } from "../../../../tutors-reader-lib/src/types/lo-types";
+  import { convertMd } from "../../../../tutors-reader-lib/src/utils/markdown-utils";
+  import { generateToc } from "../../../../tutors-reader-lib/src/utils/markdown-toc-lib";
+  import { currentCourse } from "../../../../tutors-reader-lib/src/stores/stores";
 
   export let lo: Lo;
   let contentHtml = "";

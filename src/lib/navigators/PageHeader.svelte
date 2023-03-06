@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { currentCourse, portfolio } from "tutors-reader-lib/src/stores/stores";
-  import { Breadcrumbs, IconBar } from "tutors-ui";
+  import { currentCourse, portfolio } from "../../packages/tutors-reader-lib/src/stores/stores";
+  import { Breadcrumbs, IconBar } from "../../packages/tutors-ui";
 </script>
 
 {#if !$currentCourse?.isPortfolio() && !$portfolio}

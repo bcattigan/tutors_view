@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { currentCourse, currentLo } from "tutors-reader-lib/src/stores/stores";
-  import { Icon } from "tutors-ui";
-  import type { Lo } from "tutors-reader-lib/src/types/lo-types";
+  import { currentCourse, currentLo } from "../../../../tutors-reader-lib/src/stores/stores";
+  import { Icon } from "../../..";
+  import type { Lo } from "../../../../tutors-reader-lib/src/types/lo-types";
 
   function crumbs(lo: Lo, los: Lo[]) {
     if (lo) {

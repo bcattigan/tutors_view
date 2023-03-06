@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import type { Lo } from "tutors-reader-lib/src/types/lo-types";
-  import { currentCourse } from "tutors-reader-lib/src/stores/stores";
+  import type { Lo } from "../../../../tutors-reader-lib/src/types/lo-types";
+  import { currentCourse } from "../../../../tutors-reader-lib/src/stores/stores";
   import { getIcon } from "../../Atoms/Icon/themes";
 
   let firefox = false;

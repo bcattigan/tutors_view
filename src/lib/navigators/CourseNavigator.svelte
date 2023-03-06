@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Course } from "tutors-reader-lib/src/models/course";
-  import { TopicNavigator } from "tutors-ui";
+  import type { Course } from "../../packages/tutors-reader-lib/src/models/course";
+  import { TopicNavigator } from "../../packages/tutors-ui";
   import { Accordion, AccordionItem } from "@skeletonlabs/skeleton";
 
   export let course: Course;

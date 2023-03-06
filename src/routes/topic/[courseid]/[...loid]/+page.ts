@@ -1,6 +1,6 @@
 import type { PageLoad } from "./$types";
-import { courseService } from "tutors-reader-lib/src/services/course-service";
-import { currentLo } from "tutors-reader-lib/src/stores/stores";
+import { courseService } from "../../../../packages/tutors-reader-lib/src/services/course-service";
+import { currentLo } from "../../../../packages/tutors-reader-lib/src/stores/stores";
 
 
 

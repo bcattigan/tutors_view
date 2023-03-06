@@ -1,12 +1,11 @@
 <script lang="ts">
   import Icon from "../../Atoms/Icon/Icon.svelte";
   import { getIcon } from "../../Atoms/Icon/themes";
-  import type { Lo } from "tutors-reader-lib/src/types/lo-types";
-  import { currentCourse, layout } from "tutors-reader-lib/src/stores/stores";
+  import type { Lo } from "../../../../tutors-reader-lib/src/types/lo-types";
+  import { currentCourse, layout } from "../../../../tutors-reader-lib/src/stores/stores";
   import { onDestroy } from "svelte";
-  import { Image } from "tutors-ui";
-  import { convertMd } from "tutors-reader-lib/src/utils/markdown-utils";
-  import { cardTransition } from "../../animations";
+  import { Image } from "../../..";
+  import { convertMd } from "../../../../tutors-reader-lib/src/utils/markdown-utils";
 
   export let lo: Lo;
   let target = "";
@@ -40,7 +39,7 @@
 </script>
 
 <a href="{lo.route}" target="{target}">
-  <div transition:cardTransition class="card !bg-surface-50 dark:!bg-surface-700 border-y-8 border-{getIcon(lo.type).colour}-500 m-2 {cardWidths} transition-all hover:scale-105">
+  <div class="card !bg-surface-50 dark:!bg-surface-700 border-y-8 border-{getIcon(lo.type).colour}-500 m-2 {cardWidths} transition-all hover:scale-105">
     <header class="card-header flex flex-row items-center justify-between p-3">
       <div class="inline-flex w-full">
         <div class="line-clamp-2 flex-auto {headingText} !text-black dark:!text-white">{lo.title}</div>
