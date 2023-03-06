@@ -2,12 +2,8 @@
   import { browser } from "$app/environment";
   import { onMount } from "svelte";
   import type { PageData } from "./$types";
-  import { CardDeck, UnitCard } from "tutors-ui";
-  import { authService } from "tutors-reader-lib/src/services/auth-service";
-  import { initFirebase } from "tutors-reader-lib/src/utils/firebase-utils";
+  import { CardDeck, UnitCard } from '../../../packages/tutors-ui';
   import { ProgressRadial } from "@skeletonlabs/skeleton";
-  import { getKeys } from "../../../environment";
-  import { page } from "$app/stores";
 
   export let data: PageData;
 
@@ -25,15 +21,10 @@
   }
 
   onMount(async () => {
-    if (getKeys().firebase.apiKey !== "XXX") {
-      initFirebase(getKeys().firebase);
-      authService.setCredentials(getKeys().auth0);
-      authService.checkAuth(data.course);
       if (data.course.lo.properties.ignorepin) {
         ignorePin = data.course.lo.properties.ignorepin.toString();
         window.addEventListener("keydown", keypressInput);
       }
-    }
   });
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import { CardDeck, VideoCard } from "tutors-ui";
+  import { CardDeck, VideoCard } from "../../../../packages/tutors-ui";
   export let data: PageData;
 </script>
 

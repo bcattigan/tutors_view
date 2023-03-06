@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { currentCourse, currentLo } from "tutors-reader-lib/src/stores/stores";
-  import { Image } from "tutors-ui";
-  import type { Lo } from "tutors-reader-lib/src/types/lo-types";
+  import { currentCourse, currentLo } from "../../../../tutors-reader-lib/src/stores/stores";
+  import { Image } from "../../..";
+  import type { Lo } from "../../../../tutors-reader-lib/src/types/lo-types";
   import { getIcon } from "../../Atoms/Icon/themes";
   import Icon from "@iconify/svelte";
   import { onDestroy } from "svelte";
@@ -33,7 +33,7 @@
   <div class="ml-4 flex-nowrap">
     <h2 class="mr-4 hidden !text-sm font-bold sm:!text-lg md:inline-block">{$currentLo.title}</h2>
     <!-- Badge -->
-    <div class="hidden md:block" target="_blank">
+    <div class="hidden md:block">
       {#if $currentLo.title != $currentCourse?.lo.title}
         <p class="text-sm font-bold">{$currentCourse?.lo.title}</p>
       {:else}

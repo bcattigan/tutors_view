@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import type { Topic } from "tutors-reader-lib/src/models/topic";
-  import { CardDeck, UnitCard, TalkCard } from "tutors-ui";
+  import type { Topic } from "../../../../packages/tutors-reader-lib/src/models/topic";
+  import { CardDeck, UnitCard, TalkCard } from "../../../../packages/tutors-ui";
   import { ProgressRadial } from "@skeletonlabs/skeleton";
   export let topic: Topic;
 </script>

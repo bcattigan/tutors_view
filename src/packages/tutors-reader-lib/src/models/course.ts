@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Calendar, Lo, WeekType } from "../types/lo-types";
 import { allLos, allVideoLos, flattenLos, getSortedUnits, injectCourseUrl, threadLos } from "../utils/lo-utils";
 import { Topic } from "./topic";
 import type { IconNav, IconNavBar } from "../types/icon-types";
-import { addIcon } from "tutors-ui/lib/Atoms/Icon/themes";
+import { addIcon } from '../../../tutors-ui/lib/Atoms/Icon/themes';
 
 export class Course {
   url = "";
@@ -217,10 +218,11 @@ export class Course {
         const calendarObj = this.lo.calendar;
         calendar.title = calendarObj.title;
         for (let i = 0; i < calendarObj.weeks.length; i++) {
+          const object = Object.entries(calendarObj.weeks[i])[0][1] as object;
           const week = {
             date: Object.entries(calendarObj.weeks[i])[0][0],
-            title: Object.entries(calendarObj.weeks[i])[0][1].title,
-            type: Object.entries(calendarObj.weeks[i])[0][1].type,
+						title: object['title' as keyof typeof object],
+						type: object['type' as keyof typeof object],
             dateObj: new Date(Object.entries(calendarObj.weeks[i])[0][0])
           };
           calendar.weeks.push(week);

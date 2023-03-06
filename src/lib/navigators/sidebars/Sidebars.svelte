@@ -2,8 +2,6 @@
   import { Drawer, drawerStore } from "@skeletonlabs/skeleton";
   import InfoBar from "./InfoBar.svelte";
   import TocBar from "./TocBar.svelte";
-  import OnlineBar from "./OnlineBar.svelte";
-  import ThemeBuilderBar from "./ThemeBuilderBar.svelte";
   import CalendarBar from "./CalendarBar.svelte";
 </script>
 
@@ -14,9 +12,5 @@
     <CalendarBar />
   {:else if $drawerStore.id === "toc"}
     <TocBar />
-  {:else if $drawerStore.id === "online"}
-    <OnlineBar />
-  {:else if $drawerStore.id === "theme"}
-    <ThemeBuilderBar />
   {/if}
 </Drawer>

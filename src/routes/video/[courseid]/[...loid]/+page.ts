@@ -1,5 +1,5 @@
 import type { PageLoad } from "./$types";
-import { courseService } from "tutors-reader-lib/src/services/course-service";
+import { courseService } from "../../../../packages/tutors-reader-lib/src/services/course-service";
 
 export const load: PageLoad = async ({ url, params }) => {
   let videoId = url.pathname;

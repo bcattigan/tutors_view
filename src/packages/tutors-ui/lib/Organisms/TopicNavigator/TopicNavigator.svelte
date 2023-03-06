@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { Topic } from "tutors-reader-lib/src/models/topic";
-  import Icon from "../../Atoms/Icon/Icon.svelte";
-  import { convertMd } from "tutors-reader-lib/src/utils/markdown-utils";
+  import type { Topic } from "../../../../tutors-reader-lib/src/models/topic";
+  import { Icon } from "../../..";
+  import { convertMd } from "../../../../tutors-reader-lib/src/utils/markdown-utils";
 
   export let topic: Topic;
 
@@ -12,25 +12,25 @@
   topic.toc = orderedLos;
 </script>
 
-{#each topic.toc as lo}
-  <a href="{lo.route}" class="flex py-1">
-    <Icon type="{lo.type}" />
-    <span class="ml-2 mb-1"> {@html convertMd(lo.title, "")} </span>
-    {#if lo.video && lo.type != "panelvideo"}
-      <a class="flex pl-1" href="{lo.video}">
+{#each topic.toc as aLo}
+  <a href="{aLo.route}" class="flex py-1">
+    <Icon type="{aLo.type}" />
+    <span class="ml-2 mb-1"> {@html convertMd(aLo.title, "")} </span>
+    {#if aLo.video && aLo.type != "panelvideo"}
+      <a class="flex pl-1" href="{aLo.video}">
         <Icon type="video" />
       </a>
     {/if}
   </a>
-  {#if lo.type != "lab"}
-    {#if lo.los}
-      {#each lo.los as lo}
+  {#if aLo.type != "lab"}
+    {#if aLo.los}
+      {#each aLo.los as bLo}
         <div class="flex py-1">
-          <a class="inline-flex pl-6" href="{lo.route}">
-            <Icon type="{lo.type}" /> <span class="pl-2"> {@html convertMd(lo.title, "")} </span>
+          <a class="inline-flex pl-6" href="{bLo.route}">
+            <Icon type="{bLo.type}" /> <span class="pl-2"> {@html convertMd(bLo.title, "")} </span>
           </a>
-          {#if lo.video && lo.type != "panelvideo"}
-            <a class="inline-flex pl-2" href="{lo.video}">
+          {#if bLo.video && bLo.type != "panelvideo"}
+            <a class="inline-flex pl-2" href="{bLo.video}">
               <Icon type="video" />
             </a>
           {/if}

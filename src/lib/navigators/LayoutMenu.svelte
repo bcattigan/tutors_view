@@ -1,8 +1,7 @@
 <script lang="ts">
   import { type DrawerSettings, drawerStore, popup, modeCurrent, setModeCurrent } from "@skeletonlabs/skeleton";
-  import { layout, storeTheme } from "tutors-reader-lib/src/stores/stores";
-  import moment from 'moment';
-  import { Icon } from "tutors-ui";
+  import { layout, storeTheme } from '../../packages/tutors-reader-lib/src/stores/stores';
+	import { Icon } from '../../packages/tutors-ui';
 
   function applyInitialLayout() {
     layout.set("expanded");
@@ -14,26 +13,6 @@
     } else {
       layout.set("compacted");
     }
-  }
-
-  const themeBuilderDrawerOpen: any = () => {
-    const settings: DrawerSettings = { id: "theme", position: "right", width: "w-full md:w-3/4" };
-    drawerStore.open(settings);
-  };
-
-  var isHalloween:boolean = false;
-  var isValentines:boolean = false;
-
-  const now = moment()
-  const halloweenStart = moment('19/10/____', 'DD/MM/____')
-  const halloweenEnd = moment('02/11/____', 'DD/MM/____')
-  if(now.isBetween(halloweenStart, halloweenEnd, 'days', '[]')){
-    isHalloween = true;
-  }
-  const valentinesStart = moment('02/02/____', 'DD/MM/____')
-  const valentinesEnd = moment('16/02/____', 'DD/MM/____')
-  if(now.isBetween(valentinesStart, valentinesEnd, 'days', '[]')){
-    isValentines = true;
   }
   
   applyInitialLayout();
@@ -88,40 +67,6 @@
       <button class="btn w-full flex justify-between" class:!variant-soft-primary="{$storeTheme === 'dyslexia'}">
         <span class="flex-none">Dyslexia</span>
       </button>
-      </li>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      {#if isHalloween}
-      <li
-        class="option !p-0"
-        on:click="{() => {
-          storeTheme.set('halloween');
-        }}"
-      >
-      <button class="btn w-full flex justify-between" class:!variant-soft-primary="{$storeTheme === 'halloween'}">
-        <span class="flex-none">Halloween</span>
-      </button>
-      </li>
-      {/if}
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      {#if isValentines}
-      <li
-        class="option !p-0"
-        on:click="{() => {
-          storeTheme.set('valentines');
-        }}"
-      >
-      <button class="btn w-full flex justify-between" class:!variant-soft-primary="{$storeTheme === 'valentines'}">
-        <span class="flex-none">Valentines</span>
-      </button>
-      </li>
-      {/if}
-
-      <hr />
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <li class="option !p-0" on:click="{themeBuilderDrawerOpen}">
-        <button class="btn w-full flex justify-between">
-          <span class="flex-none">Theme Builder</span>
-        </button>
       </li>
     </ul>
   </nav>

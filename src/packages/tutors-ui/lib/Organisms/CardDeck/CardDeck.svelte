@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Card } from "tutors-ui";
-  import type { Lo } from "tutors-reader-lib/src/types/lo-types";
+  import { Card } from "../../..";
+  import type { Lo } from "../../../../tutors-reader-lib/src/types/lo-types";
 
   export let los: Lo[] = [];
   export let border: boolean = false;

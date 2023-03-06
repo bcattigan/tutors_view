@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { courseUrl, currentCourse } from "tutors-reader-lib/src/stores/stores";
-  import { NavTitle } from "tutors-ui";
-  import Icon from "tutors-ui/lib/Atoms/Icon/Icon.svelte";
+  import { courseUrl, currentCourse } from '../../packages/tutors-reader-lib/src/stores/stores';
+  import { NavTitle } from '../../packages/tutors-ui';
+  import {Icon} from '../../packages/tutors-ui';
   import { AppBar, drawerStore, type DrawerSettings } from "@skeletonlabs/skeleton";
   import LayoutMenu from "./LayoutMenu.svelte";
-    import NavUser from "./NavUser.svelte";
 
   const infoDrawerOpen: any = () => {
     const settings: DrawerSettings = { id: "info", position: "left" };
@@ -47,16 +46,7 @@
   {/if}
   <svelte:fragment slot="trail">
     <div class="flex items-center space-x-1 lg:space-x-4">
-      {#if !$currentCourse?.isPortfolio()}
-        <a class="btn btn-sm" href="/search/{$courseUrl}"
-          ><Icon type="search" />
-          <span class="hidden text-sm font-bold lg:block">Search</span>
-        </a>
-        <span class="divider-vertical h-10 hidden lg:block" />
-      {/if}
       <LayoutMenu />
-      <span class="divider-vertical h-10 hidden lg:block" />
-      <NavUser />
       <button class="btn btn-sm" on:click="{tocDrawerOpen}">
         <Icon type="toc" />
       </button>

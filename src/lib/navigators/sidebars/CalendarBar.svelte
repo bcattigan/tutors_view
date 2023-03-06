@@ -1,6 +1,6 @@
 <script lang="ts">
   import { drawerStore } from "@skeletonlabs/skeleton";
-  import { currentCourse } from "tutors-reader-lib/src/stores/stores";
+  import { currentCourse } from '../../../packages/tutors-reader-lib/src/stores/stores';
 
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 

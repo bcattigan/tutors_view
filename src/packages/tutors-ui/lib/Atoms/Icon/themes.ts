@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FluentIconLib } from "./support/fluent-icons";
-import type { IconType } from "tutors-reader-lib/src/types/icon-types";
+import type { IconType } from "../../../../tutors-reader-lib/src/types/icon-types";
 
 let StandardIconLib = FluentIconLib;
 
