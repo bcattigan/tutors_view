@@ -1,22 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IconType {
-  icon: any;
-  colour: string;
+	icon: any;
+	colour: string;
 }
 
 export interface IconNav {
-  link: string;
-  icon: string;
-  tip: string;
-  target: string;
+	link: string;
+	icon: string;
+	tip: string;
+	target: string;
 }
 
 export interface IconNavBar {
-  show: boolean;
-  bar: IconNav[];
+	show: boolean;
+	bar: IconNav[];
 }
 
 export interface IconRef {
-  icon: IconType;
-  colour: string;
+	icon: IconType;
+	colour: string;
 }
