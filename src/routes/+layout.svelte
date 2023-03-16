@@ -11,7 +11,8 @@
 	import {
 		storeTheme,
 		currentLo,
-    currentPage
+    currentPage,
+    home
 	} from '../packages/tutors-reader-lib/src/stores/stores';
 	import Sidebars from '$lib/navigators/sidebars/Sidebars.svelte';
 
@@ -27,6 +28,11 @@
 	page.subscribe((path) => {
 		if (path.route.id) {
 			currentPage.set(path.url.pathname);
+		}
+    if (path.url.pathname == '/') {
+			home.set(true);
+		} else {
+			home.set(false);
 		}
 	});
 
@@ -69,8 +75,10 @@
 	<Sidebars />
 	<AppShell class="h-screen">
 		<svelte:fragment slot="header">
+      {#if !$home}
 			<NavBar />
 			<PageHeader />
+      {/if}
 		</svelte:fragment>
 		<div id="top" />
 		<div class="mx-auto my-4">
