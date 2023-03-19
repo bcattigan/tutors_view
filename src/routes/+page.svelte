@@ -1,6 +1,31 @@
 <script lang="ts">
-	const selectFile = () => {
-		console.log('test');
+	import { open, message } from '@tauri-apps/api/dialog';
+	import { basename, sep } from '@tauri-apps/api/path';
+	import { filePath } from '../packages/tutors-reader-lib/src/stores/stores';
+	import { goto } from '$app/navigation';
+
+	const selectFile = async () => {
+		const selected = await open({
+			multiple: false,
+			filters: [
+				{
+					name: 'tutors',
+					extensions: ['json']
+				}
+			]
+		});
+		if (Array.isArray(selected)) {
+			await message('Can only select a single file', { title: 'Error', type: 'error' });
+		} else if (selected === null) {
+			await message('No file selected', { title: 'Cancelled', type: 'info' });
+		} else if ((await basename(selected as string)) != 'tutors.json') {
+			await message('Must be a tutors.json file', { title: 'Error', type: 'error' });
+		} else {
+			filePath.set(selected);
+			let courseName = selected.replace(`${sep}json${sep}tutors.json`, '');
+			courseName = await basename(courseName);
+			goto(`/course/${courseName}`);
+		}
 	};
 </script>
 
@@ -42,12 +67,10 @@
 			<div class="text-center">
 				<h2>Make sure you are running Tutors Mon on the directory you are editing</h2>
 				<br />
-				<p class="text-lg">
-					Tutors View lets you view your course edits live on your desktop
-				</p>
+				<p class="text-lg">Tutors View lets you view your course edits live on your desktop</p>
 				<br />
 				<hr />
-                <br>
+				<br />
 				<p class="text-lg">Click button below</p>
 				<button class="btn mt-6 bg-primary-500 text-white" on:click={selectFile}>Select</button>
 			</div>

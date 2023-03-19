@@ -19,3 +19,4 @@ export const layout = writable('');
 export const currentPage = writable('');
 export const storeTheme = localStorageStore('storeTheme', 'tutors');
 export const home: Writable<boolean> = writable(false);
+export const filePath = localStorageStore('filePath', '');

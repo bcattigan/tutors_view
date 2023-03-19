@@ -1,35 +1,30 @@
-import { courseUrl, currentCourse, currentLo, week } from '../stores/stores';
+import { courseUrl, currentCourse, currentLo, week, filePath } from '../stores/stores';
 import { Course } from '../models/course';
 import { Lab } from '../models/lab';
 import type { Lo } from '../types/lo-types';
 import type { Topic } from '../models/topic';
+import { readTextFile } from '@tauri-apps/api/fs';
+
+let tutorsJsonFilePath = '';
+
+filePath.subscribe((filePath) => {
+	tutorsJsonFilePath = filePath;
+});
 
 export const courseService = {
 	course: Course,
-	courses: new Map<string, Course>(),
 	courseUrl: '',
 
 	async getOrLoadCourse(courseId: string): Promise<Course> {
-		let course = this.courses.get(courseId);
-		let courseUrl = courseId;
-		if (!course) {
-			if (!courseId.includes('.netlify.app') && !courseId.includes('.tutors.dev')) {
-				courseUrl = `${courseId}.netlify.app`;
-			} else {
-				courseId = courseId.split('.')[0];
-			}
-			try {
-				const response = await fetch(`https://${courseUrl}/tutors.json`);
-				const data = await response.json();
-				course = new Course(data, courseId, courseUrl);
-				this.courses.set(courseId, course);
-				return course;
-			} catch (error) {
-				console.log(error);
-				throw error;
-			}
+		const courseUrl = courseId;
+		try {
+			const data = JSON.parse(await readTextFile(tutorsJsonFilePath));
+			const course = new Course(data, courseId, courseUrl);
+			return course;
+		} catch (error) {
+			console.log(error);
+			throw error;
 		}
-		return course;
 	},
 
 	async readCourse(courseId: string): Promise<Course> {
