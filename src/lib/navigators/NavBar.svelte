@@ -50,6 +50,10 @@
 	{/if}
 	<svelte:fragment slot="trail">
 		<div class="flex items-center space-x-1 lg:space-x-4">
+			<a class="btn btn-sm" href="/">
+				<Icon type="home" />
+				<span class="hidden text-sm font-bold lg:block">Pick Course </span>
+			</a>
 			<LayoutMenu />
 			<button class="btn btn-sm" on:click={tocDrawerOpen}>
 				<Icon type="toc" />
