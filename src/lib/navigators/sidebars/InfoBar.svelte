@@ -2,7 +2,7 @@
 	import { currentCourse } from '../../../packages/tutors-reader-lib/src/stores/stores';
 	import { convertMd } from '../../../packages/tutors-reader-lib/src/utils/markdown-utils';
 	import { drawerStore } from '@skeletonlabs/skeleton';
-	const courseInfo = convertMd($currentCourse.lo.contentMd, '');
+	const courseInfo = convertMd($currentCourse.lo.routePath, $currentCourse.lo.contentMd, '');
 
 	const drawerClose: any = () => {
 		drawerStore.close();

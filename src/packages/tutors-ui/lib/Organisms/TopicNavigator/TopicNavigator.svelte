@@ -15,7 +15,7 @@
 {#each topic.toc as aLo}
 	<a href={aLo.route} class="flex py-1">
 		<Icon type={aLo.type} />
-		<span class="ml-2 mb-1"> {@html convertMd(aLo.title, '')} </span>
+		<span class="ml-2 mb-1"> {@html convertMd(aLo.routePath, aLo.title, '')} </span>
 		{#if aLo.video && aLo.type != 'panelvideo'}
 			<a class="flex pl-1" href={aLo.video}>
 				<Icon type="video" />
@@ -28,7 +28,7 @@
 				<div class="flex py-1">
 					<a class="inline-flex pl-6" href={bLo.route}>
 						<Icon type={bLo.type} />
-						<span class="pl-2"> {@html convertMd(bLo.title, '')} </span>
+						<span class="pl-2"> {@html convertMd(bLo.routePath, bLo.title, '')} </span>
 					</a>
 					{#if bLo.video && bLo.type != 'panelvideo'}
 						<a class="inline-flex pl-2" href={bLo.video}>

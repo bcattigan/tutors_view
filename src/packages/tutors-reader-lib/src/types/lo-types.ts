@@ -40,9 +40,11 @@ export interface Lo {
 	summary: string;
 	contentMd: string;
 	route: string;
+	routePath: string;
 	id: string;
 	hide: boolean;
 	los: Lo[];
 	parent: Topic;
 	icon?: any;
+	zip: string;
 }

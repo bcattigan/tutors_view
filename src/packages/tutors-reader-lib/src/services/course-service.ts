@@ -4,6 +4,7 @@ import { Lab } from '../models/lab';
 import type { Lo } from '../types/lo-types';
 import type { Topic } from '../models/topic';
 import { readTextFile } from '@tauri-apps/api/fs';
+import { convertFileSrc } from '@tauri-apps/api/tauri';
 
 let tutorsJsonFilePath = '';
 
@@ -15,10 +16,31 @@ export const courseService = {
 	course: Course,
 	courseUrl: '',
 
+	convertAssets(jsonObject: object, assetType: string, assetPath: string): object {
+		if (typeof jsonObject == 'object' && jsonObject != null) {
+			for (const key in jsonObject) {
+				if (key == assetType && jsonObject[key] != '') {
+					jsonObject[assetType] = convertFileSrc(jsonObject[assetPath]);
+				} else if (typeof jsonObject == 'object' && jsonObject != null) {
+					this.convertAssets(jsonObject[key], assetType, assetPath);
+				}
+			}
+		}
+		return jsonObject;
+	},
+
+	async convertTutorsJson() {
+		let tutorsJson = JSON.parse(await readTextFile(tutorsJsonFilePath));
+		tutorsJson = this.convertAssets(tutorsJson, 'img', 'imgPath');
+		tutorsJson = this.convertAssets(tutorsJson, 'pdf', 'pdfPath');
+		tutorsJson = this.convertAssets(tutorsJson, 'zip', 'zipPath');
+		return tutorsJson;
+	},
+
 	async getOrLoadCourse(courseId: string): Promise<Course> {
 		const courseUrl = courseId;
 		try {
-			const data = JSON.parse(await readTextFile(tutorsJsonFilePath));
+			const data = await this.convertTutorsJson();
 			const course = new Course(data, courseId, courseUrl);
 			return course;
 		} catch (error) {

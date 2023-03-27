@@ -9,7 +9,7 @@
 
 	export let lo: Lo;
 	let target = '';
-	if (lo.type === 'web') {
+	if (lo.type === 'web' || lo.type === 'github') {
 		if (lo.route.startsWith('http')) {
 			target = '_blank';
 		}
@@ -19,7 +19,10 @@
 		if (lo.type == 'video') {
 			lo.route = lo.video;
 		}
-		lo.summary = convertMd(lo.summary, '');
+		if (lo.type == 'archive') {
+			lo.route = lo.zip;
+		}
+		lo.summary = convertMd(lo.routePath, lo.summary, '');
 	}
 
 	let headingText = '';
