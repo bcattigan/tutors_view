@@ -33,9 +33,9 @@ export class Lab {
 		this.url = labId;
 		this.lo = lo;
 		const assetUrl = labId.replace(`/lab/${course.id}`, course.url);
-		this.objectivesHtml = convertMd(this.lo.los[0].contentMd, assetUrl);
+		this.objectivesHtml = convertMd(this.lo.los[0].routePath, this.lo.los[0].contentMd, assetUrl);
 		this.lo.los.forEach((chapter) => {
-			this.chaptersHtml.set(encodeURI(chapter.shortTitle), convertMd(chapter.contentMd, assetUrl));
+			this.chaptersHtml.set(encodeURI(chapter.shortTitle), convertMd(chapter.routePath, chapter.contentMd, assetUrl));
 			this.chaptersTitles.set(chapter.shortTitle, removeLeadingHashes(chapter.title));
 		});
 		this.steps = Array.from(this.chaptersHtml.keys());

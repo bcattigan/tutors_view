@@ -10,7 +10,7 @@
 	const courseId = $currentCourse.id;
 	const courseUrl = $currentCourse.url;
 	url = url.replace(courseId, courseUrl);
-	contentHtml = convertMd(lo.contentMd, url.replace('/note/', ''));
+	contentHtml = convertMd(lo.routePath, lo.contentMd, url.replace('/note/', ''));
 	contentHtml = generateToc(contentHtml);
 </script>
 
