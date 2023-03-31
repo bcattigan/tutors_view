@@ -4,6 +4,7 @@
 	export let data: PageData;
 </script>
 
+{#key data}
 <div class="container mx-auto">
 	{#key data.los}
 		{#if data.type !== 'video'}
@@ -26,3 +27,4 @@
 		{/if}
 	{/key}
 </div>
+{/key}

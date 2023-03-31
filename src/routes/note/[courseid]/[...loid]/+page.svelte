@@ -4,6 +4,7 @@
 	export let data: PageData;
 </script>
 
+{#key data}
 {#if data.lo}
 	<div class="min-h-screen flex w-11/12 mx-auto">
 		<div class="w-full">
@@ -16,3 +17,4 @@
 		</div>
 	</div>
 {/if}
+{/key}

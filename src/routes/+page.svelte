@@ -2,7 +2,8 @@
 	import { open, message } from '@tauri-apps/api/dialog';
 	import { basename, sep } from '@tauri-apps/api/path';
 	import { filePath } from '../packages/tutors-reader-lib/src/stores/stores';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
+	import { watchImmediate } from 'tauri-plugin-fs-watch-api';
 
 	const selectFile = async () => {
 		const selected = await open({
@@ -25,6 +26,10 @@
 			let courseName = selected.replace(`${sep}json${sep}tutors.json`, '');
 			courseName = await basename(courseName);
 			goto(`/course/${courseName}`);
+			await watchImmediate(selected, { recursive: true }, async (event) => {
+				console.log(event);
+				invalidateAll();
+			});
 		}
 	};
 </script>

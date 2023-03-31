@@ -118,6 +118,7 @@
 	{/if}
 </svelte:head>
 
+{#key data}
 {#each data.course.units as unit}
 	<UnitCard {unit} />
 {/each}
@@ -126,3 +127,4 @@
 {:else}
 	<CardDeck los={data.course.allLos} border />
 {/if}
+{/key}

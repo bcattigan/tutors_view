@@ -5,6 +5,7 @@
 	export let data: PageData;
 </script>
 
+{#key data}
 {#each data.topic.panelVideos as lo}
 	<VideoCard {lo} />
 {/each}
@@ -24,3 +25,4 @@
 		<Topic topic={data.topic} />
 	</div>
 {/if}
+{/key}

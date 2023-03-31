@@ -45,7 +45,7 @@
     referrerpolicy="no-referrer"
   /> -->
 </svelte:head>
-
+{#key data}
 <div class="block fixed w-full mx-auto bottom-0 lg:hidden bg-primary-50-900-token z-30">
 	<nav class="flex flex-wrap justify-between p-2">
 		{@html data.lab.horizontalNavbarHtml}
@@ -71,3 +71,4 @@
 		</div>
 	</div>
 </div>
+{/key}
