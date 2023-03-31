@@ -4,6 +4,7 @@
 	export let topic: Topic;
 </script>
 
+{#key topic}
 {#each topic.panelTalks as lo}
 	<TalkCard {lo} />
 {/each}
@@ -11,3 +12,4 @@
 	<UnitCard {unit} />
 {/each}
 <CardDeck los={topic.standardLos} border />
+{/key}

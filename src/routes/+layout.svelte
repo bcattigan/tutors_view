@@ -3,7 +3,7 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, invalidateAll } from '$app/navigation';
 	import NavBar from '$lib/navigators/NavBar.svelte';
 	import PageHeader from '$lib/navigators/PageHeader.svelte';
 	import tutors from '../packages/tutors-ui/lib/themes/tutors.css?inline';
@@ -11,13 +11,17 @@
 	import {
 		storeTheme,
 		currentLo,
-    currentPage,
-    home
+		currentPage,
+		home,
+		filePath
 	} from '../packages/tutors-reader-lib/src/stores/stores';
 	import Sidebars from '$lib/navigators/sidebars/Sidebars.svelte';
+	import { watchImmediate } from 'tauri-plugin-fs-watch-api';
+	import type { UnlistenFn } from '@tauri-apps/api/event';
 
 	let mounted = false;
 	const themes: any = { tutors, dyslexia };
+	let watcher: UnlistenFn;
 
 	onMount(async () => {
 		mounted = true;
@@ -29,11 +33,18 @@
 		if (path.route.id) {
 			currentPage.set(path.url.pathname);
 		}
-    if (path.url.pathname == '/') {
+		if (path.url.pathname == '/') {
 			home.set(true);
 		} else {
 			home.set(false);
 		}
+	});
+
+	filePath.subscribe(async (path) => {
+		watcher = await watchImmediate(path, { recursive: true }, async (event) => {
+			console.log(event);
+			invalidateAll();
+		});
 	});
 
 	afterNavigate((params: any) => {
@@ -75,10 +86,10 @@
 	<Sidebars />
 	<AppShell class="h-screen">
 		<svelte:fragment slot="header">
-      {#if !$home}
-			<NavBar />
-			<PageHeader />
-      {/if}
+			{#if !$home}
+				<NavBar />
+				<PageHeader />
+			{/if}
 		</svelte:fragment>
 		<div id="top" />
 		<div class="mx-auto my-4">
