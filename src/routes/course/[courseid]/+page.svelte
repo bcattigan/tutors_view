@@ -119,12 +119,12 @@
 </svelte:head>
 
 {#key data}
-{#each data.course.units as unit}
-	<UnitCard {unit} />
-{/each}
-{#if standardDeck}
-	<CardDeck los={data.course.standardLos} border />
-{:else}
-	<CardDeck los={data.course.allLos} border />
-{/if}
+	{#each data.course.units as unit}
+		<UnitCard {unit} />
+	{/each}
+	{#if standardDeck}
+		<CardDeck los={data.course.standardLos} border />
+	{:else}
+		<CardDeck los={data.course.allLos} border />
+	{/if}
 {/key}

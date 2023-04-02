@@ -34,7 +34,7 @@
 					<LightSwitch />
 				</button>
 			</li>
-      
+
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<li class="option !p-0" on:click={() => toggleLayout()}>
 				<button class="btn w-full flex justify-between">

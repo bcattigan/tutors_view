@@ -17,7 +17,6 @@
 		const settings: DrawerSettings = { id: 'toc', position: 'right' };
 		drawerStore.open(settings);
 	};
-  
 </script>
 
 <AppBar class="space-x-1 lg:space-x-4 shadow-none border-b-[1px] border-surface-200-700-token">

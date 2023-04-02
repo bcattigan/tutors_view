@@ -36,7 +36,9 @@ export function convertMd(route: string, md: string, url: string): string {
 		const imgMatch = filtered.matchAll(/!\[.*\]\((img\/.*)\)/g);
 		const imgMatches = Array.from(imgMatch, (result) => result[1]);
 		for (const imgName of imgMatches) {
-			const assetPath = route.includes("note") ? route +'/' + imgName : path.dirname(route) + '/' + imgName;
+			const assetPath = route.includes('note')
+				? route + '/' + imgName
+				: path.dirname(route) + '/' + imgName;
 			const assetUrl = convertFileSrc(assetPath);
 			filtered = filtered.replace(imgName, assetUrl);
 		}

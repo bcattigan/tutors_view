@@ -5,11 +5,11 @@
 </script>
 
 {#key topic}
-{#each topic.panelTalks as lo}
-	<TalkCard {lo} />
-{/each}
-{#each topic.units as unit}
-	<UnitCard {unit} />
-{/each}
-<CardDeck los={topic.standardLos} border />
+	{#each topic.panelTalks as lo}
+		<TalkCard {lo} />
+	{/each}
+	{#each topic.units as unit}
+		<UnitCard {unit} />
+	{/each}
+	<CardDeck los={topic.standardLos} border />
 {/key}

@@ -1,6 +1,6 @@
 <script lang="js">
 	import { BarLoader } from 'svelte-loading-spinners';
-  
+
 	let hide = true;
 	setTimeout(function () {
 		hide = false;
