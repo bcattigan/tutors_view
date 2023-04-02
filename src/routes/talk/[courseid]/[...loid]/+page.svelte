@@ -5,16 +5,16 @@
 </script>
 
 {#key data}
-{#if data.lo}
-	<div class="flex w-11/12 mx-auto">
-		<div class="w-full">
-			{#key data.lo}
-				<TalkCard lo={data.lo} />
-			{/key}
+	{#if data.lo}
+		<div class="flex w-11/12 mx-auto">
+			<div class="w-full">
+				{#key data.lo}
+					<TalkCard lo={data.lo} />
+				{/key}
+			</div>
+			<div class="hidden md:block">
+				<TopicNavigatorCard topic={data.lo.parent} />
+			</div>
 		</div>
-		<div class="hidden md:block">
-			<TopicNavigatorCard topic={data.lo.parent} />
-		</div>
-	</div>
-{/if}
+	{/if}
 {/key}

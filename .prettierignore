@@ -2,3 +2,7 @@
 .eslintrc.cjs
 package-lock.json
 tsconfig.json
+.DS_Store
+/build
+/.svelte-kit
+/src-tauri
