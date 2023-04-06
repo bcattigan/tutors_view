@@ -1,3 +1,9 @@
+.DS_Store
+/build
+/.svelte-kit
+
+# gitignore template for node files from github
+
 # Logs
 logs
 *.log
